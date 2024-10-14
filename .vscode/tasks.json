@@ -7,8 +7,11 @@
 			"command": "/usr/bin/gcc",
 			"args": [
 				"-g",
+				"-Wall",
+				"-Werror",
 				"*.c",
 				"-lm",
+				"-lcurses",
 				"-o",
 				"${fileDirname}/${fileBasenameNoExtension}"
 			],
