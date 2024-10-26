@@ -9,7 +9,7 @@
 /****************************************************************
  * COMPLETION INSTRUCTIONS:
  *
- * This program should read number from a file and store them in an array.
+ * This program should read numbers from a file and store them in an array.
  * 
  * The program should then (based on the user's selection) check to see
  * if the values are stored in ascending or descending order.
