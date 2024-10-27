@@ -57,7 +57,7 @@ int main(int argc, char** argv) {
             break;
 
         /* convert number */
-        sscanf(line, "%d", data[max_count]);
+        sscanf(line, "%d", data[max_count])
         max_count++;
     }
 
