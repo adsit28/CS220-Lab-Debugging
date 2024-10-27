@@ -23,7 +23,7 @@
 
 #define MAX_NUMBERS 1000 /* Max numbers in file */
 
-char DATA_FILE[100] = "";  /* The name of the data file (will be filled in by user) */
+char* DATA_FILE = "";  /* The name of the data file (will be filled in by user) */
 
 int data[MAX_NUMBERS]; /* Array of numbers to search */
 int max_count;         /* Number of valid elements in data */
@@ -32,14 +32,14 @@ int main(int argc, char** argv) {
     FILE *in_file; /* Input file */
     int i;         /* Keeps track of where we are in the array*/
     int prev;      /* the previous number */
-    int max = -999999999;       /* maxinimum value found*/
-    int min = 999999999;       /* minimum value found*/
+    int max;       /* maxinimum value found*/
+    int min;       /* minimum value found*/
     int mode;      /* 1 = ascending; 2 = descending */
     char line[80]; /* Input line */
 
     printf("What is the name of the file: ");
     fgets(DATA_FILE, 100, stdin);
-    DATA_FILE[strlen(DATA_FILE)-1] = '\0';
+    DATA_FILE[strlen(DATA_FILE)] = '\0';
 
     in_file = fopen(DATA_FILE, "r");
     if (in_file == NULL) {
@@ -57,7 +57,7 @@ int main(int argc, char** argv) {
             break;
 
         /* convert number */
-        sscanf(line, "%d", &data[max_count]);
+        sscanf(line, "%d", data[max_count]);
         max_count++;
     }
 
@@ -70,7 +70,7 @@ int main(int argc, char** argv) {
     prev = data[0];      
     i   =  0;
     
-    while (1) { 
+    while (1) {
         
         if (i == max_count && mode == 1) {
             printf("File is sorted in ascending order (min = %d; max = %d)\n", min, max);
@@ -82,13 +82,13 @@ int main(int argc, char** argv) {
             break;
         }
 
-        if (mode == 1 && data[i] < prev) {
+        if (mode == 1 && data[i] > prev) {
             printf("Not in ascending order as of index %d. Terminating.\n", i);
             break;
         }
 
-        if (mode == 2 && data[i] > prev) {
-            printf("Not in descending order as of index %d. Terminating.\n", i);
+        if (mode == 2 && data[i] < prev) {
+            printf("Not in ascending order as of index %d. Terminating.\n", i);
             break;
         }
 
